@@ -9,6 +9,7 @@
 
 #import "WRCustomNavigationBar.h"
 #import "sys/utsname.h"
+#import "UIDevice+WRUIDevice.h"
 
 #define kWRDefaultTitleSize 18
 #define kWRDefaultTitleColor [UIColor blackColor]
@@ -268,6 +269,8 @@
     return 44 + CGRectGetHeight([UIApplication sharedApplication].statusBarFrame);
 }
 + (BOOL)isIphoneX {
+    return [UIDevice wr_isIPhoneX];
+    /*
     struct utsname systemInfo;
     uname(&systemInfo);
     NSString *platform = [NSString stringWithCString:systemInfo.machine encoding:NSASCIIStringEncoding];
@@ -278,6 +281,7 @@
     }
     BOOL isIPhoneX = [platform isEqualToString:@"iPhone10,3"] || [platform isEqualToString:@"iPhone10,6"];
     return isIPhoneX;
+     */
 }
 
 @end
