@@ -10,10 +10,13 @@
 #import "WRNavigationBar.h"
 #import <objc/runtime.h>
 #import "sys/utsname.h"
+#import "UIDevice+WRUIDevice.h"
 
 @implementation WRNavigationBar
 
 + (BOOL)isIphoneX {
+    return [UIDevice wr_isIPhoneX];
+    /*
     struct utsname systemInfo;
     uname(&systemInfo);
     NSString *platform = [NSString stringWithCString:systemInfo.machine encoding:NSASCIIStringEncoding];
@@ -24,6 +27,7 @@
     }
     BOOL isIPhoneX = [platform isEqualToString:@"iPhone10,3"] || [platform isEqualToString:@"iPhone10,6"];
     return isIPhoneX;
+     */
 }
 + (CGFloat)navBarBottom {
     return [self isIphoneX] ? 88 : 64;
